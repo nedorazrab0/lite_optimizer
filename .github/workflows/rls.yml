@@ -19,7 +19,7 @@ jobs:
             ./README.md ./update.json ./changelog.md
 
       - name: Release
-        run: gh release create "$version" ./abootloop.zip -F ./changelog.md
+        run: gh release create "${version}" ./lite_optimizer.zip -F ./changelog.md
         env:
           GH_TOKEN: ${{ github.token }}
 
