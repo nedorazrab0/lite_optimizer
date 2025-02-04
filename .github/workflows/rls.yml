@@ -1,0 +1,35 @@
+name: rls
+on: workflow_dispatch
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Write the variables
+        run: cat ./module.prop | tee -a "${GITHUB_ENV}"
+
+      - name: Compress
+        run: |
+          zip -rv9 ./lite_optimizer.zip ./* -x ./.git ./.github \
+            ./README.md ./update.json ./changelog.md
+
+      - name: Release
+        run: gh release create "$version" ./abootloop.zip -F ./changelog.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Update service files
+        run: |
+          python3 ./.github/mkjson "${version}" "${versionCode}" \
+            "${zipUrl}" "${changelog}"
+          
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ./update.json
+          git commit -m 'JSON update'
+          git push
