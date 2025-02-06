@@ -1,4 +1,5 @@
 dalvik.vm.usejit=true
+dalvik.vm.useartservice=true
 dalvik.vm.usejitprofiles=true
 dalvik.vm.jitinitialsize=1m
 dalvik.vm.jitmaxsize=256m
@@ -22,8 +23,10 @@ dalvik.vm.dex2oat-swap=true
 dalvik.vm.heapsize=512m
 dalvik.vm.dex2oat-minidebuginfo=false
 dalvik.vm.heaptargetutilization=0.85
+dalvik.vm.verify-bytecode=false
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=32m
+dalvik.vm.checkjni=false
 
 ro.config.low_ram=false
 ro.lmk.use_psi=false
@@ -51,6 +54,7 @@ persist.miui.extm.bdsize=0
 persist.miui.extm.enable=0
 persist.vendor.battery.health=true
 persist.vendor.radio.rat_on=lte
+persist.logd.size=64k
 
 # audio
 ro.vendor.audio.sfx.harmankardon=true
