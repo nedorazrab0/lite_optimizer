@@ -13,9 +13,6 @@ best_dqd() {
   done
 }
 
-# Sleep mode
-echo 'deep' > /sys/power/mem_sleep
-
 # Zram
 szblk='/sys/block/zram0'
 if [[ -d "${szblk}" ]]; then
@@ -64,6 +61,9 @@ sleep 30
 until [[ -d '/data/media/0/Android' ]]; do
   sleep 30
 done
+
+# Sleep mode
+echo 'deep' > /sys/power/mem_sleep
 
 # CPU
 for cpf in /sys/devices/system/cpu/cpufreq/policy*; do
