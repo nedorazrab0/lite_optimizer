@@ -54,7 +54,6 @@ persist.miui.extm.bdsize=0
 persist.miui.extm.enable=0
 persist.vendor.battery.health=true
 persist.vendor.radio.rat_on=lte
-persist.logd.size=64k
 
 # audio
 ro.vendor.audio.sfx.harmankardon=true
