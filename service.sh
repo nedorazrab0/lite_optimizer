@@ -60,8 +60,17 @@ settings put global ntp_server 'pool.ntp.org'
 cmd package compile -m speed -p PRIORITY_BACKGROUND -a &
 
 # Wait for unblock
+sleep 30
 until [[ -d '/data/media/0/Android' ]]; do
-  sleep 1
+  sleep 30
+done
+
+# CPU
+for cpf in /sys/devices/system/cpu/cpufreq/policy*; do
+  echo 'schedutil' > "${cpf}/scaling_governor"
+  echo '1000' > "${cpf}/schedutil/down_rate_limit_us"
+  echo '1000' > "${cpf}/schedutil/up_rate_limit_us"
+  echo '1' > "${cpf}/schedutil/pl"
 done
 
 # sysctl
