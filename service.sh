@@ -46,6 +46,9 @@ for sblk in /sys/block/*/queue; do
   echo '0' > "${sblk}/rotational"
 done
 
+# Clear cache
+cmd package trim-caches 32G
+
 # fstrim
 mount -o "remount,noatime,lazytime,nodiscard,memory=normal,\
 nobarrier,fsync_mode=nobarrier,atgc,flush_merge,checkpoint_merge\
@@ -62,7 +65,7 @@ fstrim /data
 settings put global ntp_server 'pool.ntp.org'
 
 # AOT compilation
-cmd package compile -m speed -p PRIORITY_BACKGROUND -a &
+cmd package compile -m speed -p PRIORITY_BACKGROUND -a --full &
 
 # Wait for unblock
 sleep 30
