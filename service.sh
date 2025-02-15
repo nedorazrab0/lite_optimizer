@@ -47,7 +47,15 @@ for sblk in /sys/block/*/queue; do
 done
 
 # fstrim
-mount -o 'remount,nodiscard' /data
+mount -o "remount,noatime,lazytime,nodiscard,memory=normal,\
+nobarrier,fsync_mode=nobarrier,atgc,flush_merge,checkpoint_merge\
+active_logs=6,rw" /data
+
+discardonlist="$(clear; mount | grep 'ext4.*,discard' | cut -d ' ' -f3)"
+for mountpoint in ${discardonlist}; do
+  mount -o remount,nodiscard "${mountpoint}"
+done
+
 fstrim /data
 
 # NTP
