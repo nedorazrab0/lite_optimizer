@@ -21,9 +21,7 @@ if [[ -d "${szblk}" ]]; then
 
   ## Best compression alg
   echo 'lz4' > "${szblk}/comp_algorithm"
-  echo 'lz4hc' > "${szblk}/comp_algorithm"
   echo 'lzo-rle' > "${szblk}/comp_algorithm"
-  echo 'lzo' > "${szblk}/comp_algorithm"
   echo 'zstd' > "${szblk}/comp_algorithm"  # Best
 
   ## Zram size
