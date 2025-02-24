@@ -28,13 +28,19 @@ dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=32m
 dalvik.vm.checkjni=false
 
-# Android 11+
+# https://source.android.com/docs/core/perf/lmkd
 ro.config.low_ram=false
-ro.lmk.use_psi=true
+ro.lmk.use_psi=false
+ro.lmk.use_minfree_levels=false
+ro.lmk.low=1001
+ro.lmk.medium=1001
+ro.lmk.critical=800
 ro.lmk.kill_heaviest_task=true
-ro.lmk.psi_partial_stall_ms=1000
-ro.lmk.psi_complete_stall_ms=1200
-ro.lmk.swap_free_low_percentage=1
+ro.lmk.kill_timeout_ms=1
+ro.lmk.swap_compression_ratio=1.5
+ro.lmk.thrashing_limit=100
+ro.lmk.thrashing_limit_decay=5
+ro.lmk.swap_free_low_percentage=10
 ro.lmk.debug=false
 
 debug.sf.hw=1
