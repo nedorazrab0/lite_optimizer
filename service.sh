@@ -66,6 +66,9 @@ until [[ -d '/data/media/0/Android' ]]; do
   sleep 30
 done
 
+# start this if u need it)
+stop logd
+
 # Sleep mode
 echo 'deep' > /sys/power/mem_sleep
 
