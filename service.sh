@@ -33,6 +33,9 @@ if [[ -d "${szblk}" ]]; then
   swapon -d -p32767 /dev/zram0
 fi
 
+# i hope your device supports this
+echo 'simple_ondemand' > /sys/kernel/gpu/gpu_governor
+
 # blk tune
 for sblk in /sys/block/*/queue; do
   echo 'noop' > "${sblk}/scheduler"
