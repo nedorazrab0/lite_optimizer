@@ -63,11 +63,8 @@ settings put global ntp_server 'pool.ntp.org'
 # AOT compilation
 cmd package compile -m speed -p PRIORITY_BACKGROUND -a --full &
 
-# Wait for unblock
+# wait to exec commands below... (-_-)zzz
 sleep 30
-until [[ -d '/data/media/0/Android' ]]; do
-  sleep 30
-done
 
 # start this if u need it)
 stop logd
@@ -80,7 +77,8 @@ for cpf in /sys/devices/system/cpu/cpufreq/policy*; do
   echo 'schedutil' > "${cpf}/scaling_governor"
   echo '1000' > "${cpf}/schedutil/down_rate_limit_us"
   echo '1000' > "${cpf}/schedutil/up_rate_limit_us"
-  echo '1' > "${cpf}/schedutil/pl"
+  echo '1' \
+    > "${cpf}/schedutil/pl"  # decreases cpu performance
 done
 
 # sysctl
