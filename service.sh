@@ -77,8 +77,7 @@ for cpf in /sys/devices/system/cpu/cpufreq/policy*; do
   echo 'schedutil' > "${cpf}/scaling_governor"
   echo '1000' > "${cpf}/schedutil/down_rate_limit_us"
   echo '1000' > "${cpf}/schedutil/up_rate_limit_us"
-  echo '1' \
-    > "${cpf}/schedutil/pl"  # decreases cpu performance
+  echo '1' > "${cpf}/schedutil/pl"
 done
 
 # sysctl
