@@ -10,6 +10,7 @@ pm.dexopt.install=speed
 pm.dexopt.ab-ota=speed
 pm.dexopt.boot=verify
 
+dalvik.vm.dex2oat-max-image-block-size=1048576
 dalvik.vm.systemservercompilerfilter=speed
 dalvik.vm.systemuicompilerfilter=speed
 dalvik.vm.image-dex2oat-filter=speed
@@ -17,15 +18,17 @@ dalvik.vm.image-dex2oat-threads=8
 dalvik.vm.dex2oat-filter=speed
 dalvik.vm.dex2oat-threads=8
 dalvik.vm.dex2oat64.enabled=true
-dalvik.vm.heapstartsize=32m
-dalvik.vm.heapgrowthlimit=256m
+dalvik.vm.appimageformat=zstd
+dalvik.vm.check-dex-sum=true
+dalvik.vm.heapstartsize=64m
+dalvik.vm.heapgrowthlimit=512m
 dalvik.vm.dex2oat-swap=true
 dalvik.vm.heapsize=512m
 dalvik.vm.dex2oat-minidebuginfo=false
-dalvik.vm.heaptargetutilization=0.85
+dalvik.vm.heaptargetutilization=0.90
 dalvik.vm.verify-bytecode=false
-dalvik.vm.heapminfree=512k
-dalvik.vm.heapmaxfree=64m
+dalvik.vm.heapminfree=2m
+dalvik.vm.heapmaxfree=128m
 dalvik.vm.checkjni=false
 
 # https://source.android.com/docs/core/perf/lmkd
@@ -45,6 +48,8 @@ ro.lmk.thrashing_limit_decay=5
 ro.lmk.swap_free_low_percentage=10
 ro.lmk.debug=false
 
+ro.logd.size.stats=64k
+
 debug.sf.hw=1
 debug.egl.hw=1
 debug.egl.profiler=0
@@ -54,6 +59,7 @@ debug.sf.nobootanimation=1
 ro.hwui.use_vulkan=true
 ro.hwui.render_ahead=3
 
+persist.debug.dalvik.vm.jdwp.enabled=0
 persist.miui.extm.bdsize=0
 persist.miui.extm.enable=0
 persist.vendor.battery.health=true
