@@ -66,7 +66,7 @@ persist.vendor.battery.health=true
 persist.vendor.radio.rat_on=lte
 
 # audio
-ro.config.media_vol_steps=55
+ro.config.media_vol_steps=100
 ro.vendor.audio.sfx.harmankardon=true
 audio.deep_buffer.media=false
 vendor.audio.deep_buffer.media=false
